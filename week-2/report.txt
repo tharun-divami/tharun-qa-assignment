@@ -1,0 +1,569 @@
+newman
+
+Petstore API's
+
+❏ Pet
+↳ Task1 - Add Pet
+  POST /pet [errored]
+     Invalid URI "http:///pet"
+  2. Status code is 200
+  3. Pet name is banti
+  4. Pet ID is 101
+  5. Response time is under 3000ms
+
+↳ Task2 - Find Pets by Valid Status
+  GET /pet/findByStatus?status=available [errored]
+     Invalid URI "http:///pet/findByStatus?status=available"
+  7. Status code is 200
+  8. Response is an array
+  9. Each pet has name and status
+
+↳ Task2 - Find Pets by Invalid Status (Negative)
+  GET /pet/findByStatus?status=unknown [errored]
+     Invalid URI "http:///pet/findByStatus?status=unknown"
+ 11. Invalid status returns 200 empty array or 400
+
+↳ Task3 - Get Pet by ID
+  GET /pet/ [errored]
+     Invalid URI "http:///pet/"
+ 13. Status code is 200
+ 14. Pet ID is 101
+ 15. Pet name is Gani
+
+↳ Task3 - Get Pet Not Found (Negative)
+  GET /pet/999999 [errored]
+     Invalid URI "http:///pet/999999"
+ 17. Non-existent pet returns 404
+
+↳ Task3 - Invalid Pet ID (Negative)
+  GET /pet/abc [errored]
+     Invalid URI "http:///pet/abc"
+ 19. Invalid ID returns 400
+
+↳ Task4 - Update Pet
+  PUT /pet [errored]
+     Invalid URI "http:///pet"
+ 21. Status code is 200
+ 22. Pet name is updated
+ 23. Pet status is pending
+ 24. Pet ID is still 101
+
+↳ Task5 - Delete Pet
+  DELETE /pet/ [errored]
+     Invalid URI "http:///pet/"
+ 26. Status code is 200
+ 27. Response confirms deletion
+
+↳ Task5 - Delete Already Deleted Pet (Negative)
+  DELETE /pet/ [errored]
+     Invalid URI "http:///pet/"
+ 29. Already deleted pet returns 404
+
+❏ Store
+↳ Task6 - Get Inventory
+  GET /store/inventory [errored]
+     Invalid URI "http:///store/inventory"
+ 31. Status code is 200
+ 32. Response is an object
+ 33. Response has at least one key
+
+↳ Task7 - Place Order
+  POST /store/order [errored]
+     Invalid URI "http:///store/order"
+ 35. Status code is 200
+ 36. Order ID is 201
+ 37. Order status is placed
+ 38. Pet ID is 101
+
+↳ Task7 - Invalid Order (Negative)
+  POST /store/order [errored]
+     Invalid URI "http:///store/order"
+ 40. Invalid order returns 400 or 500
+
+↳ Task8 - Get Order by ID
+  GET /store/order/ [errored]
+     Invalid URI "http:///store/order/"
+ 42. Status code is 200
+ 43. Order ID is 201
+ 44. Order status is valid
+ 45. Pet ID is 101
+
+↳ Task8 - Order Not Found (Negative)
+  GET /store/order/999999 [errored]
+     Invalid URI "http:///store/order/999999"
+ 47. Non-existent order returns 404
+
+↳ Task8 - Invalid Order ID (Negative)
+  GET /store/order/abc [errored]
+     Invalid URI "http:///store/order/abc"
+ 49. Invalid order ID returns 400
+
+↳ Task9 - Delete Order
+  DELETE /store/order/ [errored]
+     Invalid URI "http:///store/order/"
+ 51. Status code is 200
+ 52. Response confirms deletion
+
+↳ Task9 - Delete Already Deleted Order (Negative)
+  DELETE /store/order/ [errored]
+     Invalid URI "http:///store/order/"
+ 54. Already deleted order returns 404
+
+❏ User
+↳ Task10 - Create User
+  POST /user [errored]
+     Invalid URI "http:///user"
+ 56. Status code is 200
+ 57. User created successfully
+
+↳ Task11 - Login
+  GET /user/login?username=&password=Pass@123 [errored]
+     Invalid URI "http:///user/login?username=&password=Pass@123"
+ 59. Status code is 200
+ 60. Response contains logged in message
+ 61. X-Rate-Limit header exists
+ 62. X-Expires-After header exists
+
+↳ Task12 - Get User by Username
+  GET /user/ [errored]
+     Invalid URI "http:///user/"
+ 64. Status code is 200
+ 65. Username is correct
+ 66. Email is correct
+
+↳ Task12 - Get Non-existing User (Negative)
+  GET /user/nonexistentuser99 [errored]
+     Invalid URI "http:///user/nonexistentuser99"
+ 68. Non-existent user returns 404
+
+↳ Task13 - Update User
+  PUT /user/ [errored]
+     Invalid URI "http:///user/"
+ 70. Status code is 200
+ 71. Response confirms update
+
+↳ Task14 - Logout
+  GET /user/logout [errored]
+     Invalid URI "http:///user/logout"
+ 73. Status code is 200
+ 74. Response confirms logout
+
+↳ Task15 - Delete User
+  DELETE /user/ [errored]
+     Invalid URI "http:///user/"
+ 76. Status code is 200
+
+↳ Task15 - Delete Already Deleted User (Negative)
+  DELETE /user/ [errored]
+     Invalid URI "http:///user/"
+ 78. Already deleted user returns 404
+
+┌─────────────────────────┬──────────┬──────────┐
+│                         │ executed │   failed │
+├─────────────────────────┼──────────┼──────────┤
+│              iterations │        1 │        0 │
+├─────────────────────────┼──────────┼──────────┤
+│                requests │       25 │       25 │
+├─────────────────────────┼──────────┼──────────┤
+│            test-scripts │       25 │        0 │
+├─────────────────────────┼──────────┼──────────┤
+│      prerequest-scripts │        0 │        0 │
+├─────────────────────────┼──────────┼──────────┤
+│              assertions │       53 │       53 │
+├─────────────────────────┴──────────┴──────────┤
+│ total run duration: 287ms                     │
+├───────────────────────────────────────────────┤
+│ total data received: 0B (approx)              │
+└───────────────────────────────────────────────┘
+
+[31m   # [39m[31m failure        [39m[31m detail                                                           [39m
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 01.  Error                                                                            
+                      Invalid URI "http:///pet"                                        
+                      at request                                                       
+                      inside ""                                                        
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 02.  AssertionError  Status code is 200                                               
+                      expected PostmanResponse{ …(5) } to have property 'code'         
+                      at assertion:0 in test-script                                    
+                      inside "Pet / Task1 - Add Pet"                                   
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 03.  JSONError       Pet name is banti                                                
+                      "undefined" is not valid JSON                                    
+                      at assertion:1 in test-script                                    
+                      inside "Pet / Task1 - Add Pet"                                   
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 04.  JSONError       Pet ID is 101                                                    
+                      "undefined" is not valid JSON                                    
+                      at assertion:2 in test-script                                    
+                      inside "Pet / Task1 - Add Pet"                                   
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 05.  AssertionError  Response time is under 3000ms                                    
+                      expected undefined to be a number or a date                      
+                      at assertion:3 in test-script                                    
+                      inside "Pet / Task1 - Add Pet"                                   
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 06.  Error                                                                            
+                      Invalid URI "http:///pet/findByStatus?status=available"          
+                      at request                                                       
+                      inside ""                                                        
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 07.  AssertionError  Status code is 200                                               
+                      expected PostmanResponse{ …(5) } to have property 'code'         
+                      at assertion:0 in test-script                                    
+                      inside "Pet / Task2 - Find Pets by Valid Status"                 
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 08.  JSONError       Response is an array                                             
+                      "undefined" is not valid JSON                                    
+                      at assertion:1 in test-script                                    
+                      inside "Pet / Task2 - Find Pets by Valid Status"                 
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 09.  JSONError       Each pet has name and status                                     
+                      "undefined" is not valid JSON                                    
+                      at assertion:2 in test-script                                    
+                      inside "Pet / Task2 - Find Pets by Valid Status"                 
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 10.  Error                                                                            
+                      Invalid URI "http:///pet/findByStatus?status=unknown"            
+                      at request                                                       
+                      inside ""                                                        
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 11.  AssertionError  Invalid status returns 200 empty array or 400                    
+                      expected undefined to deeply equal 400                           
+                      at assertion:0 in test-script                                    
+                      inside "Pet / Task2 - Find Pets by Invalid Status (Negative)"    
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 12.  Error                                                                            
+                      Invalid URI "http:///pet/"                                       
+                      at request                                                       
+                      inside ""                                                        
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 13.  AssertionError  Status code is 200                                               
+                      expected PostmanResponse{ …(5) } to have property 'code'         
+                      at assertion:0 in test-script                                    
+                      inside "Pet / Task3 - Get Pet by ID"                             
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 14.  JSONError       Pet ID is 101                                                    
+                      "undefined" is not valid JSON                                    
+                      at assertion:1 in test-script                                    
+                      inside "Pet / Task3 - Get Pet by ID"                             
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 15.  JSONError       Pet name is Gani                                                 
+                      "undefined" is not valid JSON                                    
+                      at assertion:2 in test-script                                    
+                      inside "Pet / Task3 - Get Pet by ID"                             
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 16.  Error                                                                            
+                      Invalid URI "http:///pet/999999"                                 
+                      at request                                                       
+                      inside ""                                                        
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 17.  AssertionError  Non-existent pet returns 404                                     
+                      expected PostmanResponse{ …(5) } to have property 'code'         
+                      at assertion:0 in test-script                                    
+                      inside "Pet / Task3 - Get Pet Not Found (Negative)"              
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 18.  Error                                                                            
+                      Invalid URI "http:///pet/abc"                                    
+                      at request                                                       
+                      inside ""                                                        
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 19.  AssertionError  Invalid ID returns 400                                           
+                      expected PostmanResponse{ …(5) } to have property 'code'         
+                      at assertion:0 in test-script                                    
+                      inside "Pet / Task3 - Invalid Pet ID (Negative)"                 
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 20.  Error                                                                            
+                      Invalid URI "http:///pet"                                        
+                      at request                                                       
+                      inside ""                                                        
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 21.  AssertionError  Status code is 200                                               
+                      expected PostmanResponse{ …(5) } to have property 'code'         
+                      at assertion:0 in test-script                                    
+                      inside "Pet / Task4 - Update Pet"                                
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 22.  JSONError       Pet name is updated                                              
+                      "undefined" is not valid JSON                                    
+                      at assertion:1 in test-script                                    
+                      inside "Pet / Task4 - Update Pet"                                
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 23.  JSONError       Pet status is pending                                            
+                      "undefined" is not valid JSON                                    
+                      at assertion:2 in test-script                                    
+                      inside "Pet / Task4 - Update Pet"                                
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 24.  JSONError       Pet ID is still 101                                              
+                      "undefined" is not valid JSON                                    
+                      at assertion:3 in test-script                                    
+                      inside "Pet / Task4 - Update Pet"                                
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 25.  Error                                                                            
+                      Invalid URI "http:///pet/"                                       
+                      at request                                                       
+                      inside ""                                                        
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 26.  AssertionError  Status code is 200                                               
+                      expected PostmanResponse{ …(5) } to have property 'code'         
+                      at assertion:0 in test-script                                    
+                      inside "Pet / Task5 - Delete Pet"                                
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 27.  JSONError       Response confirms deletion                                       
+                      "undefined" is not valid JSON                                    
+                      at assertion:1 in test-script                                    
+                      inside "Pet / Task5 - Delete Pet"                                
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 28.  Error                                                                            
+                      Invalid URI "http:///pet/"                                       
+                      at request                                                       
+                      inside ""                                                        
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 29.  AssertionError  Already deleted pet returns 404                                  
+                      expected PostmanResponse{ …(5) } to have property 'code'         
+                      at assertion:0 in test-script                                    
+                      inside "Pet / Task5 - Delete Already Deleted Pet (Negative)"     
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 30.  Error                                                                            
+                      Invalid URI "http:///store/inventory"                            
+                      at request                                                       
+                      inside ""                                                        
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 31.  AssertionError  Status code is 200                                               
+                      expected PostmanResponse{ …(5) } to have property 'code'         
+                      at assertion:0 in test-script                                    
+                      inside "Store / Task6 - Get Inventory"                           
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 32.  JSONError       Response is an object                                            
+                      "undefined" is not valid JSON                                    
+                      at assertion:1 in test-script                                    
+                      inside "Store / Task6 - Get Inventory"                           
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 33.  JSONError       Response has at least one key                                    
+                      "undefined" is not valid JSON                                    
+                      at assertion:2 in test-script                                    
+                      inside "Store / Task6 - Get Inventory"                           
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 34.  Error                                                                            
+                      Invalid URI "http:///store/order"                                
+                      at request                                                       
+                      inside ""                                                        
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 35.  AssertionError  Status code is 200                                               
+                      expected PostmanResponse{ …(5) } to have property 'code'         
+                      at assertion:0 in test-script                                    
+                      inside "Store / Task7 - Place Order"                             
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 36.  JSONError       Order ID is 201                                                  
+                      "undefined" is not valid JSON                                    
+                      at assertion:1 in test-script                                    
+                      inside "Store / Task7 - Place Order"                             
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 37.  JSONError       Order status is placed                                           
+                      "undefined" is not valid JSON                                    
+                      at assertion:2 in test-script                                    
+                      inside "Store / Task7 - Place Order"                             
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 38.  JSONError       Pet ID is 101                                                    
+                      "undefined" is not valid JSON                                    
+                      at assertion:3 in test-script                                    
+                      inside "Store / Task7 - Place Order"                             
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 39.  Error                                                                            
+                      Invalid URI "http:///store/order"                                
+                      at request                                                       
+                      inside ""                                                        
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 40.  AssertionError  Invalid order returns 400 or 500                                 
+                      expected undefined to be one of [ 400, 500 ]                     
+                      at assertion:0 in test-script                                    
+                      inside "Store / Task7 - Invalid Order (Negative)"                
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 41.  Error                                                                            
+                      Invalid URI "http:///store/order/"                               
+                      at request                                                       
+                      inside ""                                                        
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 42.  AssertionError  Status code is 200                                               
+                      expected PostmanResponse{ …(5) } to have property 'code'         
+                      at assertion:0 in test-script                                    
+                      inside "Store / Task8 - Get Order by ID"                         
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 43.  JSONError       Order ID is 201                                                  
+                      "undefined" is not valid JSON                                    
+                      at assertion:1 in test-script                                    
+                      inside "Store / Task8 - Get Order by ID"                         
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 44.  JSONError       Order status is valid                                            
+                      "undefined" is not valid JSON                                    
+                      at assertion:2 in test-script                                    
+                      inside "Store / Task8 - Get Order by ID"                         
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 45.  JSONError       Pet ID is 101                                                    
+                      "undefined" is not valid JSON                                    
+                      at assertion:3 in test-script                                    
+                      inside "Store / Task8 - Get Order by ID"                         
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 46.  Error                                                                            
+                      Invalid URI "http:///store/order/999999"                         
+                      at request                                                       
+                      inside ""                                                        
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 47.  AssertionError  Non-existent order returns 404                                   
+                      expected PostmanResponse{ …(5) } to have property 'code'         
+                      at assertion:0 in test-script                                    
+                      inside "Store / Task8 - Order Not Found (Negative)"              
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 48.  Error                                                                            
+                      Invalid URI "http:///store/order/abc"                            
+                      at request                                                       
+                      inside ""                                                        
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 49.  AssertionError  Invalid order ID returns 400                                     
+                      expected PostmanResponse{ …(5) } to have property 'code'         
+                      at assertion:0 in test-script                                    
+                      inside "Store / Task8 - Invalid Order ID (Negative)"             
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 50.  Error                                                                            
+                      Invalid URI "http:///store/order/"                               
+                      at request                                                       
+                      inside ""                                                        
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 51.  AssertionError  Status code is 200                                               
+                      expected PostmanResponse{ …(5) } to have property 'code'         
+                      at assertion:0 in test-script                                    
+                      inside "Store / Task9 - Delete Order"                            
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 52.  JSONError       Response confirms deletion                                       
+                      "undefined" is not valid JSON                                    
+                      at assertion:1 in test-script                                    
+                      inside "Store / Task9 - Delete Order"                            
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 53.  Error                                                                            
+                      Invalid URI "http:///store/order/"                               
+                      at request                                                       
+                      inside ""                                                        
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 54.  AssertionError  Already deleted order returns 404                                
+                      expected PostmanResponse{ …(5) } to have property 'code'         
+                      at assertion:0 in test-script                                    
+                      inside "Store / Task9 - Delete Already Deleted Order (Negative)" 
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 55.  Error                                                                            
+                      Invalid URI "http:///user"                                       
+                      at request                                                       
+                      inside ""                                                        
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 56.  AssertionError  Status code is 200                                               
+                      expected PostmanResponse{ …(5) } to have property 'code'         
+                      at assertion:0 in test-script                                    
+                      inside "User / Task10 - Create User"                             
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 57.  JSONError       User created successfully                                        
+                      "undefined" is not valid JSON                                    
+                      at assertion:1 in test-script                                    
+                      inside "User / Task10 - Create User"                             
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 58.  Error                                                                            
+                      Invalid URI "http:///user/login?username=&password=Pass@123"     
+                      at request                                                       
+                      inside ""                                                        
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 59.  AssertionError  Status code is 200                                               
+                      expected PostmanResponse{ …(5) } to have property 'code'         
+                      at assertion:0 in test-script                                    
+                      inside "User / Task11 - Login"                                   
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 60.  JSONError       Response contains logged in message                              
+                      "undefined" is not valid JSON                                    
+                      at assertion:1 in test-script                                    
+                      inside "User / Task11 - Login"                                   
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 61.  AssertionError  X-Rate-Limit header exists                                       
+                      expected undefined to exist                                      
+                      at assertion:2 in test-script                                    
+                      inside "User / Task11 - Login"                                   
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 62.  AssertionError  X-Expires-After header exists                                    
+                      expected undefined to exist                                      
+                      at assertion:3 in test-script                                    
+                      inside "User / Task11 - Login"                                   
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 63.  Error                                                                            
+                      Invalid URI "http:///user/"                                      
+                      at request                                                       
+                      inside ""                                                        
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 64.  AssertionError  Status code is 200                                               
+                      expected PostmanResponse{ …(5) } to have property 'code'         
+                      at assertion:0 in test-script                                    
+                      inside "User / Task12 - Get User by Username"                    
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 65.  JSONError       Username is correct                                              
+                      "undefined" is not valid JSON                                    
+                      at assertion:1 in test-script                                    
+                      inside "User / Task12 - Get User by Username"                    
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 66.  JSONError       Email is correct                                                 
+                      "undefined" is not valid JSON                                    
+                      at assertion:2 in test-script                                    
+                      inside "User / Task12 - Get User by Username"                    
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 67.  Error                                                                            
+                      Invalid URI "http:///user/nonexistentuser99"                     
+                      at request                                                       
+                      inside ""                                                        
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 68.  AssertionError  Non-existent user returns 404                                    
+                      expected PostmanResponse{ …(5) } to have property 'code'         
+                      at assertion:0 in test-script                                    
+                      inside "User / Task12 - Get Non-existing User (Negative)"        
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 69.  Error                                                                            
+                      Invalid URI "http:///user/"                                      
+                      at request                                                       
+                      inside ""                                                        
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 70.  AssertionError  Status code is 200                                               
+                      expected PostmanResponse{ …(5) } to have property 'code'         
+                      at assertion:0 in test-script                                    
+                      inside "User / Task13 - Update User"                             
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 71.  JSONError       Response confirms update                                         
+                      "undefined" is not valid JSON                                    
+                      at assertion:1 in test-script                                    
+                      inside "User / Task13 - Update User"                             
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 72.  Error                                                                            
+                      Invalid URI "http:///user/logout"                                
+                      at request                                                       
+                      inside ""                                                        
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 73.  AssertionError  Status code is 200                                               
+                      expected PostmanResponse{ …(5) } to have property 'code'         
+                      at assertion:0 in test-script                                    
+                      inside "User / Task14 - Logout"                                  
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 74.  JSONError       Response confirms logout                                         
+                      "undefined" is not valid JSON                                    
+                      at assertion:1 in test-script                                    
+                      inside "User / Task14 - Logout"                                  
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 75.  Error                                                                            
+                      Invalid URI "http:///user/"                                      
+                      at request                                                       
+                      inside ""                                                        
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 76.  AssertionError  Status code is 200                                               
+                      expected PostmanResponse{ …(5) } to have property 'code'         
+                      at assertion:0 in test-script                                    
+                      inside "User / Task15 - Delete User"                             
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 77.  Error                                                                            
+                      Invalid URI "http:///user/"                                      
+                      at request                                                       
+                      inside ""                                                        
+[90m     [39m[90m                [39m[90m                                                                  [39m
+ 78.  AssertionError  Already deleted user returns 404                                 
+                      expected PostmanResponse{ …(5) } to have property 'code'         
+                      at assertion:0 in test-script                                    
+                      inside "User / Task15 - Delete Already Deleted User (Negative)"  
